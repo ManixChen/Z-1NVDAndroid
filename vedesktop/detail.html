@@ -1,0 +1,883 @@
+<!DOCTYPE html >
+<head>
+    <title>VESystem VEDesktop</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0 , maximum-scale=1.0, user-scalable=0">
+
+    <link rel="stylesheet" type="text/css" href="css/apply.css">
+    <link rel="stylesheet" type="text/css" href="css/share.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/vdstyle.css">
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <style>
+        .swiper-container {
+            padding: 1.8em 0 3em 0;
+        }
+
+        .swiper-container .pagination {
+            bottom: 0.8em;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+
+<div id="wrap" class="clearfix overflow mg-auto">
+
+    <div class="apply-nav overflow mg-auto area" id="top_menudiv">
+        <div class="overflow clearfix apply-top border-bom">
+            <a href="index.html" class="apply-return">返回</a>
+
+            <h2>桌面详情</h2>
+            <a href="#" class="apply-pup">弹出</a>
+        </div>
+        <div class="i-icon mg-auto overflow area clearfix" id="apply-pup-icon">
+            <ul class="clearfix">
+                <li><a href="javascript:CON_VDesktop( '0')"  title="开机|关机" class="i-icon" id="vmoff">
+                    <img src="img/app_Shutdown.png" id="vmoff_ico"></a>
+                </li>
+                <li><a href="javascript:CON_VDesktop( '-1')"  title="重启" class="i-icon"><img src="img/app_Restart.png"></a></li>
+                <li><a href="javascript:CON_VDesktop( '-1')"  title="" class="i-icon"><img src="img/app_Reduction.png"></a></li>
+                <li><a href="javascript:CON_VDesktop( '2')"  title="断电" class="i-icon"><img src="img/app_Power%20failure.png"></a></li>
+            </ul>
+        </div>
+
+
+    </div>
+
+
+    <div class="hot-down clearfix overflow" style="margin-top: 60px;">
+
+        <a class="hot-img clearfix">
+
+            <img src="ico/0windows.png" alt="" title="" id="vmico"/>
+
+            <h1><span id="os_name_z1">加载中...</span></h1>
+
+            <p>
+                <span>运行状态</span><span id="os_name_z2">加载中...</span>
+            </p>
+
+            <p>
+                <span>操作系统</span><span id="os_name_z3">加载中...</span>
+            </p>
+        </a>
+        <a href="javascript:Start_VDesktop( A_VM ,'1')" class="hot-download downBtn">登录</a>
+    </div>
+    <div class="float-download">
+
+        <a href="javascript:Start_VDesktop( A_VM ,'1')" class="downBtn">登录桌面</a>
+    </div>
+
+    <div class="roll-slide clearfix overflow border">
+        <div class="swiper-container swiper-free-mode" id="roll-wrap">
+            <div class="swiper-wrapper" id="roll-img">
+                <div class="swiper-slide"><img src="desktop/desktop7.jpg" alt="">
+                </div>
+            </div>
+            <div class="pagination"></div>
+            <script type="text/javascript">
+                var newSlideSize = function slideSize() {
+                    // var w = Math.ceil($(".swiper-container").width());
+                    // $(".swiper-container,.swiper-slide").height(w + 0);
+                    var w = Math.ceil($(".swiper-container").width() / 1.96);
+                    $(".swiper-container,.swiper-wrapper,.swiper-slide").height(w);
+                };
+                newSlideSize();
+                $(window).resize(function () {
+                    newSlideSize();
+                });
+            </script>
+
+        </div>
+    </div>
+
+    <div class="hot-detail">
+        <h2>桌面详情</h2>
+
+        <div class="clearfix hot-detail-wrap" id="hot-detail">
+            <p>最后登录：<span id="os_name_z4">加载中...</span></p>
+
+            <p id="short" style="display:block;">
+
+                地址: <span id="graphics_address">加载中...</span><br/>
+                端口: <span id="graphics_port">加载中...</span><br/>
+                内存: <span id="memory">加载中...</span><br/>
+                硬盘: <span id="HDD">加载中...</span><br/>
+                CPU: <span id="CPU">加载中...</span><br/>
+            </p>
+
+            <p id="all" style="display:none;">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="text-medium">资源</p>
+
+                            <div class="super-large text-secondary" data-count="this" data-from="0" data-to="44"
+                                 data-duration="1.5">0
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div id="reqs-per-second" style="height: 150px;"></div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="reqs-per-second-chart" style="height: 150px;"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="text-medium">CPU: XE5 2.8G</p>
+
+                            <div class="super-large text-purple" data-count="this" data-from="0" data-to="16"
+                                 data-duration="2">0
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div id="cpu-usage" style="height: 150px;"></div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="cpu-usage-chart" style="height: 150px;"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="text-medium">内存：8G</p>
+
+                            <div class="super-large text-info" data-count="this" data-from="0" data-to="315"
+                                 data-duration="3">0
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div id="memory-usage" style="height: 150px;"></div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="memory-usage-chart" style="height: 150px;"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            </p><br/>
+            <b class='detail-more'>查看更多</b></div>
+    </div>
+
+    <script type="text/javascript">
+
+
+        window.onload = function () {
+            var mySwiper = new Swiper('.swiper-container', {
+                pagination: '.pagination',
+                paginationClickable: true,
+                freeMode: false,
+                freeModeFluid: true
+            });
+            //内容提要 点击加载更多
+            var more = true;
+            $(".detail-more").click(function () {
+                if (more == true) {
+                    $('#short').css('display', 'none');
+                    $('#all').css('display', 'block');
+                    $(this).addClass("detail-more2");
+                    more = false;
+                }
+                else {
+                    $(this).removeClass("detail-more2");
+                    $('#short').css('display', 'block');
+                    $('#all').css('display', 'none');
+                    more = true;
+                }
+            });
+        };
+    </script>
+
+
+    <!--底部-->
+    <div id="bottom-menudiv">
+        <div style="display: block;border-bottom: solid 1px #FFF;border-top: solid 1px #cacaca;text-indent: -9999px;height: 0px;">
+            line
+        </div>
+        <div style="width: 100%; height: 3.8em; line-height: 3.8em; text-align: center;color:#FFF">VESystem VEDesktop for
+            Android
+        </div>
+    </div>
+
+</div>
+
+<div class="info-nr">
+    <div id="info-nr-phone" class="info-nr-phone">
+        <section id="toMenu"></section>
+        <div class="menu_01"><a href="#"></a></div>
+        <div class="menu_02"><a href="#"></a></div>
+        <div class="menu_03"><a href="#"></a></div>
+        <div class="menu_04"><a href="#"></a></div>
+        <div class="menu_05"><a href="#"></a></div>
+    </div>
+</div>
+
+
+</body>
+
+
+<script type="text/javascript" src="js/com.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/swiper-2.1.min.js"></script>
+
+
+<script>
+    jQuery(document).ready(function ($) {
+        var gaugesPalette = ['#8dc63f', '#40bbea', '#ffba00', '#cc3f44'];
+
+        // Data Sources for all charts
+        var reqs_per_second_data = [
+            {time: new Date("October 02, 2014 01:00:00"), reqs: 89},
+            {time: new Date("October 02, 2014 02:00:00"), reqs: 79},
+            {time: new Date("October 02, 2014 03:00:00"), reqs: 115},
+            {time: new Date("October 02, 2014 04:00:00"), reqs: 186},
+            {time: new Date("October 02, 2014 05:00:00"), reqs: 110},
+            {time: new Date("October 02, 2014 06:00:00"), reqs: 196},
+            {time: new Date("October 02, 2014 07:00:00"), reqs: 128},
+            {time: new Date("October 02, 2014 08:00:00"), reqs: 51},
+            {time: new Date("October 02, 2014 09:00:00"), reqs: 70},
+            {time: new Date("October 02, 2014 10:00:00"), reqs: 54},
+            {time: new Date("October 02, 2014 11:00:00"), reqs: 2},
+            {time: new Date("October 02, 2014 12:00:00"), reqs: 184},
+            {time: new Date("October 02, 2014 13:00:00"), reqs: 48},
+            {time: new Date("October 02, 2014 14:00:00"), reqs: 75},
+            {time: new Date("October 02, 2014 15:00:00"), reqs: 200},
+            {time: new Date("October 02, 2014 16:00:00"), reqs: 9},
+            {time: new Date("October 02, 2014 17:00:00"), reqs: 37},
+            {time: new Date("October 02, 2014 18:00:00"), reqs: 152},
+            {time: new Date("October 02, 2014 19:00:00"), reqs: 78},
+            {time: new Date("October 02, 2014 20:00:00"), reqs: 154},
+            {time: new Date("October 02, 2014 21:00:00"), reqs: 184},
+            {time: new Date("October 02, 2014 22:00:00"), reqs: 167},
+            {time: new Date("October 02, 2014 23:00:00"), reqs: 12},
+            {time: new Date("October 03, 2014 00:00:00"), reqs: 88},
+        ];
+
+        var cpu_usage_data = [
+            {time: new Date("October 02, 2014 01:00:00"), usage: 75},
+            {time: new Date("October 02, 2014 02:00:00"), usage: 55},
+            {time: new Date("October 02, 2014 03:00:00"), usage: 49},
+            {time: new Date("October 02, 2014 04:00:00"), usage: 87},
+            {time: new Date("October 02, 2014 05:00:00"), usage: 8},
+            {time: new Date("October 02, 2014 06:00:00"), usage: 20},
+            {time: new Date("October 02, 2014 07:00:00"), usage: 39},
+            {time: new Date("October 02, 2014 08:00:00"), usage: 26},
+            {time: new Date("October 02, 2014 09:00:00"), usage: 87},
+            {time: new Date("October 02, 2014 10:00:00"), usage: 69},
+            {time: new Date("October 02, 2014 11:00:00"), usage: 40},
+            {time: new Date("October 02, 2014 12:00:00"), usage: 57},
+            {time: new Date("October 02, 2014 13:00:00"), usage: 48},
+            {time: new Date("October 02, 2014 14:00:00"), usage: 73},
+            {time: new Date("October 02, 2014 15:00:00"), usage: 28},
+            {time: new Date("October 02, 2014 16:00:00"), usage: 5},
+            {time: new Date("October 02, 2014 17:00:00"), usage: 73},
+            {time: new Date("October 02, 2014 18:00:00"), usage: 27},
+            {time: new Date("October 02, 2014 19:00:00"), usage: 63},
+            {time: new Date("October 02, 2014 20:00:00"), usage: 5},
+            {time: new Date("October 02, 2014 21:00:00"), usage: 100},
+            {time: new Date("October 02, 2014 22:00:00"), usage: 61},
+            {time: new Date("October 02, 2014 23:00:00"), usage: 39},
+            {time: new Date("October 03, 2014 00:00:00"), usage: 59},
+        ];
+
+        var memory_usage_data = [
+            {time: new Date("October 02, 2014 01:00:00"), used: 559},
+            {time: new Date("October 02, 2014 02:00:00"), used: 692},
+            {time: new Date("October 02, 2014 03:00:00"), used: 534},
+            {time: new Date("October 02, 2014 04:00:00"), used: 607},
+            {time: new Date("October 02, 2014 05:00:00"), used: 50},
+            {time: new Date("October 02, 2014 06:00:00"), used: 772},
+            {time: new Date("October 02, 2014 07:00:00"), used: 30},
+            {time: new Date("October 02, 2014 08:00:00"), used: 108},
+            {time: new Date("October 02, 2014 09:00:00"), used: 440},
+            {time: new Date("October 02, 2014 10:00:00"), used: 371},
+            {time: new Date("October 02, 2014 11:00:00"), used: 209},
+            {time: new Date("October 02, 2014 12:00:00"), used: 378},
+            {time: new Date("October 02, 2014 13:00:00"), used: 308},
+            {time: new Date("October 02, 2014 14:00:00"), used: 585},
+            {time: new Date("October 02, 2014 15:00:00"), used: 96},
+            {time: new Date("October 02, 2014 16:00:00"), used: 473},
+            {time: new Date("October 02, 2014 17:00:00"), used: 864},
+            {time: new Date("October 02, 2014 18:00:00"), used: 895},
+            {time: new Date("October 02, 2014 19:00:00"), used: 610},
+            {time: new Date("October 02, 2014 20:00:00"), used: 893},
+            {time: new Date("October 02, 2014 21:00:00"), used: 753},
+            {time: new Date("October 02, 2014 22:00:00"), used: 209},
+            {time: new Date("October 02, 2014 23:00:00"), used: 555},
+            {time: new Date("October 03, 2014 00:00:00"), used: 144},
+        ];
+
+        // Requests per second gauge
+        $('#reqs-per-second').dxCircularGauge({
+            scale: {
+                startValue: 0,
+                endValue: 200,
+                majorTick: {
+                    tickInterval: 50
+                }
+            },
+            rangeContainer: {
+                palette: 'pastel',
+                width: 3,
+                ranges: [
+                    {
+                        startValue: 0,
+                        endValue: 50,
+                        color: gaugesPalette[0]
+                    }, {
+                        startValue: 50,
+                        endValue: 100,
+                        color: gaugesPalette[1]
+                    }, {
+                        startValue: 100,
+                        endValue: 150,
+                        color: gaugesPalette[2]
+                    }, {
+                        startValue: 150,
+                        endValue: 200,
+                        color: gaugesPalette[3]
+                    }
+                ],
+            },
+            value: 44,
+            valueIndicator: {
+                offset: 10,
+                color: '#2c2e2f',
+                spindleSize: 12
+            }
+        });
+
+        // Requests per second chart
+        $("#reqs-per-second-chart").dxChart({
+            dataSource: reqs_per_second_data,
+            commonPaneSettings: {
+                border: {
+                    visible: true,
+                    color: '#f5f5f5'
+                }
+            },
+            commonSeriesSettings: {
+                type: "area",
+                argumentField: "time",
+                border: {
+                    color: '#68b828',
+                    width: 1,
+                    visible: true
+                }
+            },
+            series: [
+                {valueField: "reqs", name: "Reqs per Second", color: '#68b828', opacity: .5},
+            ],
+            commonAxisSettings: {
+                label: {
+                    visible: true
+                },
+                grid: {
+                    visible: true,
+                    color: '#f5f5f5'
+                }
+            },
+            argumentAxis: {
+                valueMarginsEnabled: false,
+                label: {
+                    customizeText: function (arg) {
+                        return date('h:i A', arg.value);
+                    }
+                },
+            },
+            legend: {
+                visible: false
+            }
+        });
+
+
+        // CPU Usage
+        $('#cpu-usage').dxCircularGauge({
+            scale: {
+                startValue: 0,
+                endValue: 100,
+                majorTick: {
+                    tickInterval: 25
+                }
+            },
+            rangeContainer: {
+                palette: 'pastel',
+                width: 3,
+                ranges: [
+                    {
+                        startValue: 0,
+                        endValue: 25,
+                        color: gaugesPalette[0]
+                    }, {
+                        startValue: 25,
+                        endValue: 50,
+                        color: gaugesPalette[1]
+                    }, {
+                        startValue: 50,
+                        endValue: 75,
+                        color: gaugesPalette[2]
+                    }, {
+                        startValue: 75,
+                        endValue: 100,
+                        color: gaugesPalette[3]
+                    }
+                ],
+            },
+            value: 16,
+            valueIndicator: {
+                offset: 10,
+                color: '#2c2e2f',
+                spindleSize: 12
+            }
+        });
+
+        // CPU Usage chart
+        $("#cpu-usage-chart").dxChart({
+            dataSource: cpu_usage_data,
+            commonPaneSettings: {
+                border: {
+                    visible: true,
+                    color: '#f5f5f5'
+                }
+            },
+            commonSeriesSettings: {
+                type: "area",
+                argumentField: "time",
+                border: {
+                    color: '#7c38bc',
+                    width: 1,
+                    visible: true
+                }
+            },
+            series: [
+                {valueField: "usage", name: "Capacity used", color: '#7c38bc', opacity: .5},
+            ],
+            commonAxisSettings: {
+                label: {
+                    visible: true
+                },
+                grid: {
+                    visible: true,
+                    color: '#f5f5f5'
+                }
+            },
+            argumentAxis: {
+                valueMarginsEnabled: false,
+                label: {
+                    customizeText: function (arg) {
+                        return date('h:i A', arg.value);
+                    }
+                },
+            },
+            legend: {
+                visible: false
+            }
+        });
+
+
+        // Memory Usage
+        $('#memory-usage').dxCircularGauge({
+            scale: {
+                startValue: 0,
+                endValue: 1000,
+                majorTick: {
+                    tickInterval: 250
+                }
+            },
+            rangeContainer: {
+                palette: 'pastel',
+                width: 3,
+                ranges: [
+                    {
+                        startValue: 0,
+                        endValue: 250,
+                        color: '#40bbea'
+                    }, {
+                        startValue: 250,
+                        endValue: 500,
+                        color: '#40bbea'
+                    }, {
+                        startValue: 500,
+                        endValue: 750,
+                        color: '#40bbea'
+                    }, {
+                        startValue: 750,
+                        endValue: 1000,
+                        color: '#40bbea'
+                    }
+                ],
+            },
+            value: 315,
+            valueIndicator: {
+                offset: 10,
+                color: '#2c2e2f',
+                spindleSize: 12
+            }
+        });
+
+        // Memory Usage chart
+        $("#memory-usage-chart").dxChart({
+            dataSource: memory_usage_data,
+            commonPaneSettings: {
+                border: {
+                    visible: true,
+                    color: '#f5f5f5'
+                }
+            },
+            commonSeriesSettings: {
+                type: "area",
+                argumentField: "time",
+                border: {
+                    color: '#40bbea',
+                    width: 1,
+                    visible: true
+                }
+            },
+            series: [
+                {valueField: "used", name: "Megabytes occupied", color: '#40bbea', opacity: .5},
+            ],
+            commonAxisSettings: {
+                label: {
+                    visible: true
+                },
+                grid: {
+                    visible: true,
+                    color: '#f5f5f5'
+                }
+            },
+            argumentAxis: {
+                valueMarginsEnabled: false,
+                label: {
+                    customizeText: function (arg) {
+                        return date('h:i A', arg.value);
+                    }
+                },
+            },
+            legend: {
+                visible: false
+            }
+        });
+
+
+        // Combine charts for filtering, grouped by time
+        var all_data_sources = [];
+
+        $.map(reqs_per_second_data, function (arg, i) {
+            all_data_sources.push({
+                time: arg.time,
+                requestsPerMinute: reqs_per_second_data[i].reqs,
+                cpuUsage: cpu_usage_data[i].usage,
+                memoryUsed: memory_usage_data[i].used
+            });
+        });
+
+
+        // Range Filter
+        $("#range-chart").dxRangeSelector({
+            dataSource: all_data_sources,
+            size: {
+                height: 140
+            },
+            chart: {
+                series: [
+                    {argumentField: "time", valueField: "requestsPerMinute", color: '#68b828', opacity: .65},
+                    {argumentField: "time", valueField: "cpuUsage", color: '#7c38bc', opacity: .65},
+                    {argumentField: "time", valueField: "memoryUsed", color: '#40bbea', opacity: .65}
+                ]
+            },
+
+            selectedRangeChanged: function (e) {
+                var filter = {
+                    reqsPerMinuteData: [],
+                    cpuUsageData: [],
+                    memoryUsageData: []
+                };
+
+                $.map(all_data_sources, function (arg, i) {
+                    if (date("U", e.startValue) <= date("U", arg.time) && date("U", e.endValue) >= date("U", arg.time)) {
+                        filter.reqsPerMinuteData.push({
+                            time: arg.time,
+                            reqs: arg.requestsPerMinute
+                        });
+
+                        filter.cpuUsageData.push({
+                            time: arg.time,
+                            usage: arg.cpuUsage
+                        });
+
+                        filter.memoryUsageData.push({
+                            time: arg.time,
+                            used: arg.memoryUsed
+                        });
+                    }
+                });
+
+                $('#reqs-per-second-chart').dxChart('instance').option('dataSource', filter.reqsPerMinuteData);
+                $('#cpu-usage-chart').dxChart('instance').option('dataSource', filter.cpuUsageData);
+                $('#memory-usage-chart').dxChart('instance').option('dataSource', filter.memoryUsageData);
+            }
+        });
+
+
+        // Resize charts
+        $(window).on('xenon.resize', function () {
+            $("#range-chart").data("dxRangeSelector").render();
+
+            $("#reqs-per-second-chart").data("dxChart").render();
+            $("#cpu-usage-chart").data("dxChart").render();
+            $("#memory-usage-chart").data("dxChart").render();
+
+            $("#reqs-per-second").data("dxCircularGauge").render();
+            $("#cpu-usage").data("dxCircularGauge").render();
+            $("#memory-usage").data("dxCircularGauge").render();
+        });
+    });
+</script>
+
+
+<link rel="stylesheet" href="../assets/css/xenon-core.css">
+<script src="../assets/js/joinable-2.js"></script>
+<script src="../assets/js/xenon-widgets.js"></script>
+<script src="../assets/js/devexpress-web-14.1/js/knockout-3.1.0.js"></script>
+<script src="../assets/js/devexpress-web-14.1/js/globalize.min.js"></script>
+<script src="../assets/js/devexpress-web-14.1/js/dx.chartjs.js"></script>
+<script src="../assets/js/xenon-custom.js"></script>
+
+
+<link rel="stylesheet" href="../msgbox/toastr/toastr.css">
+<link rel="stylesheet" href="../msgbox/showmessage.css">
+<script type="text/javascript" src="../msgbox/toastr/toastr.min.js"></script>
+<script type="text/javascript" src="../msgbox/jBox.min.js"></script>
+<script type="text/javascript" src="../msgbox/msgbox.js"></script>
+
+
+
+<script>
+
+    var A_VM = 'xxxx';
+    A_VM = GC_Android.GetVM_ID();
+
+    var sid =  GC_Android.Getsession_id();
+
+    //https://192.168.50.196/vesystem/index.php/VDI/Index/Mobile_info?id=1438670837&vid=12
+
+    var android_get_httpurl = "https://"+ GC_Android.Geturl_adder() +":"+GC_Android.Geturl_port() + "/" +GC_Android.Geturl_dir() ;
+    var urlStr =  android_get_httpurl + "//index.php/VDI/Index/Mobile_info?id=" + sid +"&vid=" +A_VM ;
+
+    //alert( urlStr  );
+    JsonData_get_Android( urlStr );
+
+    function JsonData_get_Android(  urlStr  ){
+
+        //alert( urlStr );
+        GC_Android.HTML_GET_JSONDATA( urlStr );
+
+    }
+
+
+ /*
+ *
+ *
+ *id  虚拟机id
+  name  虚拟机名
+  os_name   虚拟机系统
+  graphics_port 端口
+  graphics_passwd  虚拟机密码
+  graphics_address  虚拟机所在服务器的ip
+  result 结果  //0是成功， 1是失败 2,未登录
+ *
+ *
+ * */
+
+    var graphics_name;  //虚拟机名
+    var graphics_port;// 端口
+    var graphics_passwd; // 虚拟机密码
+    var graphics_address; // 虚拟机所在服务器的ip
+
+    function Android_set_jsondata( Json_str ){
+
+
+        if( Json_str == 'null' ){
+
+            ShowMessage_T( "", "获取虚拟桌面详情失败...",2 );
+            return false;
+        }
+
+
+        var obj = JSON.parse( Json_str );
+
+        //alert( Json_str  );
+
+        if ( obj != null ){
+
+
+            $("#os_name_z1").html( obj.vmware[0].name );
+
+            if( obj.vmware[0].current_status == 0 ){
+
+                $("#os_name_z2").html( "运行" );
+
+                $("#vmoff").attr("href","javascript:CON_VDesktop( '1')" );
+                $("#vmoff_ico").attr("src","img/app_Shutdown.png");
+
+            }else{
+
+                $("#os_name_z2").html( "关闭" );
+
+                $("#vmoff").attr("href","javascript:CON_VDesktop( '0')" );
+                $("#vmoff_ico").attr("src","img/app_power.png");
+            }
+
+
+
+            $("#os_name_z3").html( obj.vmware[0].os_name );
+            $("#os_name_z4").html( "未知" );
+
+
+            graphics_name  =  obj.vmware[0].name;
+            graphics_port =  obj.vmware[0].graphics_port;
+            graphics_passwd = obj.vmware[0].graphics_passwd;
+            graphics_address = obj.vmware[0].graphics_address;
+
+
+            $("#graphics_address").html( obj.vmware[0].graphics_address );
+            $("#graphics_port").html( obj.vmware[0].graphics_port );
+            $("#HDD").html( "未知" );
+            $("#CPU").html( obj.vmware[0].cpu_count + " 颗" );
+            $("#memory").html( obj.vmware[0].memory_size + " M" );
+
+        }else{
+
+            ShowMessage_T( "", "载入虚拟桌面详细信息失败",2 );
+        }
+
+
+    }
+
+    function CON_VDesktop( c_id ){
+
+
+        if(  c_id < 0 ){
+
+            ShowMessage_T( "", "此版本暂不提供该功能",2 );
+            return false;
+        }
+
+        var android_get_httpurl = "https://"+ GC_Android.Geturl_adder() +":"+GC_Android.Geturl_port() + "/" +GC_Android.Geturl_dir() ;
+        var urlStr =  android_get_httpurl + "/index.php/VDI/Index/Mobile_state?n=" + A_VM +"&f="+ c_id +"&id=" + sid;
+
+        GC_Android.HTML_CON_VM( urlStr , c_id);
+
+    }
+
+
+    function Start_VDesktop(  v_id ,cid ){
+
+        GC_Android.HTML_START_VM( graphics_address, graphics_passwd, graphics_port, graphics_name );
+
+    }
+
+    function Android_UP_VMstatus( Json_str , c_id ){
+
+
+        if( Json_str == 'null' ){
+
+            ShowMessage_T( "", "操作执行失败...",2 );
+            return false;
+        }
+
+
+        var obj = JSON.parse( Json_str );
+
+        //alert( Json_str  );
+
+        if ( obj != null ){
+
+           /*
+           *
+           * 'result'=>0,         //0是成功， 1是失败 2,未登录
+            'port'=>'20089',             //端口
+            'password'=>'422',           //密码
+            'client_ip'=>'192.168.50.225'  //ip
+           *
+           * */
+
+            if(  obj.result != 0 ){
+
+                ShowMessage_T( "", "操作执行失败...",2 );
+                return false;
+
+            }else{
+
+
+                graphics_port =  obj.port;
+                graphics_passwd = obj.password;
+                graphics_address = obj.client_ip;
+
+
+                if( c_id == 0 ){
+
+                    $("#os_name_z2").html( "运行" );
+
+                    $("#vmoff").attr("href","javascript:CON_VDesktop( '1')" );
+                    $("#vmoff_ico").attr("src","img/app_Shutdown.png");
+
+                }else{
+
+                    $("#os_name_z2").html( "关闭" );
+
+                    $("#vmoff").attr("href","javascript:CON_VDesktop( '0')" );
+                    $("#vmoff_ico").attr("src","img/app_power.png");
+                }
+
+
+
+                //ShowMessage_T( "", "操作执行成功...",2 );
+            }
+
+
+        }
+
+    }
+
+
+</script>
+
+
+</html>

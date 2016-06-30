@@ -1,0 +1,262 @@
+<!DOCTYPE html >
+<head>
+    <title>VESystem VEDesktop</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0 , maximum-scale=1.0, user-scalable=0">
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/xenon-core.css">
+    <link rel="stylesheet" type="text/css" href="css/apply.css">
+    <link rel="stylesheet" type="text/css" href="css/share.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/vdstyle.css">
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <style>
+        #wrap {
+            background: #FFF;
+        }
+
+
+        #tabs1{
+
+            width: 95%;
+
+        }
+        .form-control{
+
+            width: 90%;
+        }
+
+        .list-group-item > .badge2 {
+            float: right;
+        }
+        .badge2 {
+            display: inline-block;
+            min-width: 10px;
+            padding: 3px 7px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #ffffff;
+            line-height: 1;
+            vertical-align: baseline;
+            white-space: nowrap;
+            text-align: center;
+            --background-color: #777777;
+            border-radius: 10px;
+        }
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+
+
+<div id="wrap" class="clearfix overflow mg-auto">
+
+    <div id="top_menudiv"  class="apply-nav overflow mg-auto area" >
+        <div class="overflow clearfix apply-top border-bom" >
+            <a href="index.html" class="apply-return">返回</a>
+            <h2>参数设置</h2>
+
+        </div>
+
+
+    </div>
+
+    <div  style="margin-top: 80px;margin-bottom: 80px;">
+
+
+        <div class="row" id="tabs1">
+
+            <div class="col-md-12">
+
+                <ul class="nav nav-tabs nav-tabs-justified">
+                    <li class="active">
+                        <a href="#home-3" data-toggle="tab">
+                            <span class="visible-xs">配置</span>
+                            <span class="hidden-xs">配置</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#profile-3" data-toggle="tab">
+                            <span class="visible-xs">连接</span>
+                            <span class="hidden-xs">连接</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home-3" style="margin-left: -30px;">
+
+                        <div class="panel panel-default" style="width: 90%">
+                            <div >
+
+                                <div class="panel-body">
+
+
+                                    <ul class="list-group list-group-minimal">
+                                        <li class="list-group-item">
+                            <span class="badge2">
+                                <input type="checkbox" checked class="iswitch iswitch-blue">
+                            </span>
+
+                                            启用身份验证
+                                        </li>
+                                        <li class="list-group-item">
+                            <span class="badge2">
+                                <input type="checkbox" checked class="iswitch iswitch-blue">
+                            </span>
+                                            重启后自动还原
+                                        </li>
+                                        <li class="list-group-item">
+                            <span class="badge2">
+                                <input type="checkbox" checked class="iswitch iswitch-blue">
+                            </span>
+                                            共享本地存储
+                                        </li>
+                                        <li class="list-group-item">
+                            <span class="badge2">
+                                <input type="checkbox" checked class="iswitch iswitch-secondary">
+                            </span>
+                                            共享剪切板
+                                        </li>
+                                        <li class="list-group-item">
+                            <span class="badge2">
+                                <input type="checkbox" checked class="iswitch iswitch-red">
+                            </span>
+                                            启动本地GPU 加强
+                                        </li>
+                                    </ul>
+
+
+                                    <div class="form-group">
+
+                                        <button type="button" class="btn btn-info btn-single" onclick="applyVPC();" style="height:35px;width: 100%;">
+                                            保存设置
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="profile-3">
+
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="field-1" class="control-label">服务端IP</label>
+
+                                    <input type="text" class="form-control" id="field-1" placeholder="8.8.8.8">
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="field-2" class="control-label">通讯端口</label>
+
+                                    <input type="text" class="form-control" id="field-2" placeholder="3389">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label for="field-3" class="control-label">密钥</label>
+
+                                    <input type="text" class="form-control" id="field-3" placeholder="9891505">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="form-group">
+
+                                <button type="button" class="btn btn-info btn-single" onclick="applyVPC();" style="height:35px;width: 100%;">
+                                    保存设置
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <!--底部-->
+    <div id="bottom-menudiv">
+        <div style="display: block;border-bottom: solid 1px #FFF;border-top: solid 1px #cacaca;text-indent: -9999px;height: 0px;">
+            line
+        </div>
+        <div style="width: 100%; height: 3.8em; line-height: 3.8em;text-align: center;color:#FFF">VESystem VEDesktop for Android</div>
+    </div>
+</div>
+
+</body>
+
+
+
+<script type="text/javascript" src="js/com.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/swiper-2.1.min.js"></script>
+
+<link rel="stylesheet" href="../assets/css/fonts/linecons/css/linecons.css">
+<link rel="stylesheet" href="../assets/css/fonts/fontawesome/css/font-awesome.min.css">
+
+
+<!-- Bottom Scripts -->
+<script src="../assets/js/bootstrap.min.js"></script>
+
+<script>
+
+    function applyVPC(){
+        //ostype cpu_z memsize hdsize vpcname stext
+        var ostype = $("#ostype").val();
+        var cpu_z = $("#cpu_z").val();
+        var memsize = $("#memsize").val();
+        var hdsize = $("#hdsize").val();
+        var stext = $("#stext").val();
+
+        alert(  "ostype: "+ ostype + "\nostype: "+ cpu_z +  "\nmemsize: "+ memsize + "\nhdsize: "+ hdsize + "\nstext: "+stext);
+    }
+
+</script>
+
+<script src="../assets/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../assets/css/xenon-forms.css">
+
+</html>

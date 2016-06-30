@@ -1,0 +1,459 @@
+<!DOCTYPE html >
+<head>
+    <title>VESystem VEDesktop</title>
+    <meta name="description" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0 , maximum-scale=1.0, user-scalable=0">
+
+
+	<link rel="stylesheet" href="../assets/css/bootstrap.css">
+
+
+    <link rel="stylesheet" type="text/css" href="css/apply.css">
+    <link rel="stylesheet" type="text/css" href="css/share.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/vdstyle.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/swiper-2.1.min.js"></script>
+    <script type="text/javascript" src="js/lazyload.js"></script>
+
+
+
+    <style>
+        .drawer-nav-title{
+            color:#FFF;
+        }
+
+        .modal .form-control{
+
+            width: 90%;
+        }
+
+        .modal label{
+
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 5px;
+            font-weight: normal;
+        }
+
+        .list-group-item > .badge2 {
+            float: right;
+        }
+        .badge2 {
+            display: inline-block;
+            min-width: 10px;
+            padding: 3px 7px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #ffffff;
+            line-height: 1;
+            vertical-align: baseline;
+            white-space: nowrap;
+            text-align: center;
+            --background-color: #777777;
+            border-radius: 10px;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body class="drawer drawer-right">
+
+<div class="drawer-overlay">
+
+    <div id="wrap" class="clearfix overflow mg-auto">
+
+        <div class="apply-nav overflow mg-auto area" id="top_menudiv">
+            <div class="overflow clearfix apply-top border-bom">
+                <a href="./index.html" class="apply-logo">VESystem</a>
+                <h2>和信桌面虚拟化</h2>
+                <a id="show_rmenu" href="#" class="apply-pup">弹出</a>
+            </div>
+
+        </div>
+
+
+        <div class="swiper-container overflow" style="margin-top: 80px;">
+
+            <div class="swiper-wrapper" id="swiper-wrapper">
+
+                <div class="swiper-slide" style=""><a href="javascript:void(0);"><img
+                        src="desktop/desktop4.jpg"
+                        alt="desktop1" title="desktop1"></a></div>
+
+                <div class="swiper-slide" style=""><a href="javascript:void(0);"><img
+                        src="desktop/desktop1.jpg"
+                        alt="desktop3" title="desktop3" ></a></div>
+
+                <div class="swiper-slide" style=""><a href="javascript:void(0);"><img
+                        src="desktop/desktop5.jpg"
+                        alt="desktop5" title="desktop5" ></a></div>
+
+                <div class="swiper-slide" style=""><a href="javascript:void(0);"><img
+                        src="desktop/desktop8.jpg"
+                        alt="desktop7" title="desktop7" ></a></div>
+
+                <div class="swiper-slide" style=""><a href="javascript:void(0);"><img
+                        src="desktop/desktop2.jpg"
+                        alt="desktop2" title="desktop2" ></a></div>
+
+            </div>
+
+            <div class="pagination2"></div>
+
+        </div>
+        <script type="text/javascript">
+            var newSlideSize = function slideSize() {
+                var w = Math.ceil($(".swiper-container").width() / 1.96);
+                $(".swiper-container,.swiper-wrapper,.swiper-slide").height(w);
+            };
+            newSlideSize();
+            $(window).resize(function () {
+                newSlideSize();
+            });
+        </script>
+
+        <div class="i-tab mg-auto overflow area clearfix">
+            <div class="i-tab-title">
+                <h2>您的桌面</h2>
+
+                <div class="tab-btn" id="tab1" hidden>
+                    <p class="mg-auto clearfix">
+                        <a href="javascript:;" class="tab-cur">推荐</a>
+                        <a href="javascript:;">分类</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="tab-content clearfix overflow" id="con1">
+                <div class="clearfix tab-con" style="display:block">
+                    <ul class="clearfix" id="myvdList">
+
+                    </ul>
+                </div>
+
+
+            </div>
+            <div style="height: 50px;" id="span_n"></div>
+
+        </div>
+
+        <!--底部-->
+        <div id="bottom-menudiv" >
+            <div style="display: block;border-bottom: solid 1px #FFF;border-top: solid 1px #cacaca;text-indent: -9999px;height: 0px;">
+                line
+            </div>
+            <div style="width: 100%; height: 3.8em; line-height: 3.8em; text-align: center;color:#FFF">VESystem VEDesktop for Android</div>
+        </div>
+
+
+    </div>
+
+    <div class="drawer-main drawer-default" >
+        <nav class="drawer-nav" role="navigation">
+            <div class="drawer-brand">
+                <span>个人管理中心</span>
+            </div>
+            <p class="drawer-nav-title">用户信息</p>
+            <ul class="drawer-nav-list">
+                <li><span>登录ID: </span><span id="loginname_i">获取中...</span></li>
+                <li><span>登录时间: </span><span id="logintime_i">获取中...</span></li>
+                <li><span>角色: </span><span id="usertype_i">普通</span></li>
+                <li><a href="../index.html">【注销】</a></li>
+
+            </ul>
+            <p class="drawer-nav-title">虚拟桌面</p>
+            <ul class="drawer-nav-list">
+                <li><a href="javascript:;" onclick="">当前服务器：*****</a></li>
+                <li><a href="javascript:;" onclick="">端口：*****</a></li>
+                <li><a href="javascript:;" onclick="">密钥：*****</a></li>
+                <li><span>分配虚机：8 台</span></li>
+                <li><span>工作中：5 台</span></li>
+                <li><a href="./setup.html" onclick="">【高级参数配置】</a></li>
+                <li><a href="./apply.html" >【申请新虚拟机】</a></li>
+            </ul>
+            <p class="drawer-nav-title">设备信息</p>
+            <ul class="drawer-nav-list">
+                <li><span>OS：Android </span><span id="os_i">获取中...</span></li>
+                <li><span>设备：</span><span id="vd_i">获取中...</span></li>
+                <li><span>CPU：</span><span id="cpu_i">获取中...</span></li>
+
+            </ul>
+            <p class="drawer-nav-title">系统</p>
+            <ul class="drawer-nav-list">
+                 <li><a href="info.html">【关于】</a></li>
+
+                 <li><a href="javascript:;" onclick="ShowSetDlg( 'modal-exit' );">【退出系统】</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+<!--///////////////////////////////////////////////////////////////////////////////////////-->
+
+
+    <div class="modal fade" id="modal-exit">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">退出</h4>
+                </div>
+
+                <div class="modal-body">
+                    确认退出和信虚拟桌面吗？
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="_ExitSystem();">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--///////////////////////////////////////////////////////////////////////////////////////-->
+
+
+    <div class="modal fade" id="modal-Nsetup">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">服务器-参数配置</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">服务端IP</label>
+
+                                <input type="text" class="form-control" id="field-1" placeholder="8.8.8.8">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="field-2" class="control-label">通讯端口</label>
+
+                                <input type="text" class="form-control" id="field-2" placeholder="3389">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="form-group">
+                                <label for="field-3" class="control-label">密钥</label>
+
+                                <input type="text" class="form-control" id="field-3" placeholder="9891505">
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">保存设置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--///////////////////////////////////////////////////////////////////////////////////////-->
+
+
+    <div class="modal fade" id="modal-Hsetup">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">高级参数配置</h4>
+                </div>
+
+                <div class="modal-body">
+
+
+                    <ul class="list-group list-group-minimal">
+                        <li class="list-group-item">
+                            <span class="badge2">
+                                <input type="checkbox" checked class="iswitch iswitch-blue">
+                            </span>
+
+                            启用身份验证
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge2">
+                                <input type="checkbox" checked class="iswitch iswitch-blue">
+                            </span>
+                            重启后自动还原
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge2">
+                                <input type="checkbox" checked class="iswitch iswitch-blue">
+                            </span>
+                            共享本地存储
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge2">
+                                <input type="checkbox" checked class="iswitch iswitch-secondary">
+                            </span>
+                            共享剪切板
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge2">
+                                <input type="checkbox" checked class="iswitch iswitch-red">
+                            </span>
+                            启动本地GPU 加强
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">保存设置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!--///////////////////////////////////////////////////////////////////////////////////////-->
+
+<script type="text/javascript" src="js/com.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        var mySwiper = new Swiper('.swiper-container', {
+            pagination: '.pagination2',
+            loop: true,
+            autoplay: 3000,
+            paginationClickable: true,
+            onSlideChangeStart: function () {
+                //回调函数
+            }
+        });
+        cTab("#tab1", "#con1");
+        //cTab("#tab2", "#con2");
+        $('.drawer').drawer();
+        GetInfo();
+    };
+</script>
+
+<link rel="stylesheet" href="css/drawer.min.css">
+<script src="js/iscroll.js"></script>
+<script src="js/jquery.drawer.min.js"></script>
+
+<link rel="stylesheet" href="../msgbox/toastr/toastr.css">
+<link rel="stylesheet" href="../msgbox/showmessage.css">
+<script type="text/javascript" src="../msgbox/toastr/toastr.min.js"></script>
+<script type="text/javascript" src="../msgbox/jBox.min.js"></script>
+<script type="text/javascript" src="../msgbox/msgbox.js"></script>
+
+<script src="../assets/js/jquery.cookie.js"></script>
+<script src="js/vedesktop.js"></script>
+
+<script>
+
+    var  session_id = GC_Android.Getsession_id();
+
+    function GetInfo(){
+
+      var  cpu_i =  GC_Android.GetCPU_Info();
+      var  os_i =  GC_Android.GetOS_Info();
+      var  vd_i =  GC_Android.GetDV_Info();
+      var  loginname_i = GC_Android.GetLoginName();
+      var  logintime_i = GC_Android.GetLoginTime();
+
+
+
+        if(  cpu_i != null ){
+
+            $("#cpu_i").html( cpu_i );
+        }else{
+
+            $("#cpu_i").html( "获取失败" );
+        }
+
+        if(  os_i != null ){
+
+            $("#os_i").html( os_i );
+        }else{
+
+            $("#os_i").html( "获取失败" );
+        }
+
+        if(  vd_i != null ){
+
+            $("#vd_i").html( vd_i );
+        }else{
+
+            $("#vd_i").html( "获取失败" );
+        }
+
+        if(  loginname_i != null ){
+
+            $("#loginname_i").html( loginname_i );
+        }else{
+
+            $("#loginname_i").html( "获取失败" );
+        }
+
+        if(  logintime_i != null ){
+
+            $("#logintime_i").html( logintime_i );
+        }else{
+
+            $("#logintime_i").html( "获取失败" );
+        }
+
+    }
+
+    $('#show_rmenu').click(function(){
+        //$('.drawer').drawer();
+        $('.drawer').drawer("open");
+    });
+
+    function ShowSetDlg( mdid ){
+
+        $('.drawer').drawer("close");
+
+        setTimeout(
+                jQuery('#'+ mdid ).modal('show', {backdrop: 'static'}),
+                1000);
+    }
+
+    var android_get_httpurl = "https://"+ GC_Android.Geturl_adder() +":"+GC_Android.Geturl_port() + "/" +GC_Android.Geturl_dir() ;
+
+    VPCList_get_Android(  android_get_httpurl ,session_id );
+
+
+
+</script>
+
+<script src="../assets/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../assets/css/xenon-forms.css">
+
+
+</body>
+</html>

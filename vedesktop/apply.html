@@ -1,0 +1,263 @@
+<!DOCTYPE html >
+<head>
+    <title>VESystem VEDesktop</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0 , maximum-scale=1.0, user-scalable=0">
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/xenon-core.css">
+    <link rel="stylesheet" type="text/css" href="css/apply.css">
+    <link rel="stylesheet" type="text/css" href="css/share.css">
+    <link rel="stylesheet" type="text/css" href="css/public.css">
+    <link rel="stylesheet" type="text/css" href="css/vdstyle.css">
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <style>
+        #wrap {
+            background: #FFF;
+        }
+
+
+        #tabs1{
+
+            width: 95%;
+
+        }
+        .form-control{
+
+            width: 90%;
+        }
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+
+
+<div id="wrap" class="clearfix overflow mg-auto">
+
+    <div id="top_menudiv"  class="apply-nav overflow mg-auto area" >
+        <div class="overflow clearfix apply-top border-bom" >
+            <a href="index.html" class="apply-return">返回</a>
+            <h2>申请新虚拟机</h2>
+
+        </div>
+
+
+    </div>
+
+    <div  style="margin-top: 80px;margin-bottom: 80px;">
+
+
+        <div class="row" id="tabs1">
+
+            <div class="col-md-12">
+
+                <ul class="nav nav-tabs nav-tabs-justified">
+                    <li class="active">
+                        <a href="#home-3" data-toggle="tab">
+                            <span class="visible-xs">申请</span>
+                            <span class="hidden-xs">申请</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#profile-3" data-toggle="tab">
+                            <span class="visible-xs">审批</span>
+                            <span class="hidden-xs">审批</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home-3" style="margin-left: -30px;">
+
+                       <div class="panel panel-default" style="width: 90%">
+                           <div >
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">所需新机配置要求：</h3>
+                                    <div class="panel-options">
+
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+
+                                        <div class="form-group">
+                                            <label class="control-label">操作系统</label>
+                                            <select id="ostype" class="form-control" style="width: 80%;height: 40px;">
+                                                <option value="1"裸机无系统</option>
+                                                <option value="2">Windows XP</option>
+                                                <option value="3">Windows 7</option>
+                                                <option value="4">Windows 8</option>
+                                                <option value="5">Windows 8.1</option>
+                                                <option value="6">Windows 10</option>
+                                                <option value="7">Windows 2003 X64</option>
+                                                <option value="8">Windows 2008 R2</option>
+                                                <option value="9">Windows 2012 R2</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label">CPU: （核心）</label>
+                                            <select id="cpu_z" class="form-control" style="width: 30%;height: 40px;">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="4">4</option>
+                                                <option value="6">6</option>
+                                                <option value="8">8</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="memsize">内存：（ G ）</label>
+                                            <input type="text" class="form-control" id="memsize" placeholder="8" style="width: 90%;">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="hdsize">硬盘：（ G ）</label>
+                                            <input type="text" class="form-control" id="hdsize" placeholder="500" style="width: 90%;">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="vpcname">虚拟机名（自定义）</label>
+                                            <input type="text" class="form-control" id="vpcname" placeholder="GCWIN8" style="width: 90%;">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="stext">附言</label>
+                                            <input type="text" class="form-control" id="stext" placeholder="不给老子快点开通，弄死你" style="width: 90%;">
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <button type="button" class="btn btn-info btn-single" onclick="applyVPC();" style="height:35px;width: 100%;">
+                                                提交申请
+                                            </button>
+                                        </div>
+
+                                </div>
+                           </div>
+                       </div>
+
+                    </div>
+                    <div class="tab-pane" id="profile-3">
+
+                        <table class="table table-striped" style="margin-left: -10px;">
+                            <thead>
+                            <tr>
+
+                                <th>时间</th>
+                                <th>机器ID</th>
+                                <th>审核</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr>
+
+                                <td>2015-07-31</td>
+                                <td>GCWIN7</td>
+                                <td class="middle-align">
+                                    待审核
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>2015-07-31</td>
+                                <td>GCWIN8</td>
+                                <td class="middle-align">
+                                    审核中
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>2015-07-31</td>
+                                <td>GCWIN10</td>
+                                <td class="middle-align">
+                                    已否决
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>2015-07-31</td>
+                                <td>GCWIN2008</td>
+                                <td class="middle-align">
+                                    已开通
+                                </td>
+                            </tr>
+
+
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <!--底部-->
+    <div id="bottom-menudiv">
+        <div style="display: block;border-bottom: solid 1px #FFF;border-top: solid 1px #cacaca;text-indent: -9999px;height: 0px;">
+            line
+        </div>
+        <div style="width: 100%; height: 3.8em; line-height: 3.8em;text-align: center;color:#FFF">VESystem VEDesktop for Android</div>
+    </div>
+</div>
+
+</body>
+
+
+
+<script type="text/javascript" src="js/com.js"></script>
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/swiper-2.1.min.js"></script>
+
+<link rel="stylesheet" href="../assets/css/fonts/linecons/css/linecons.css">
+<link rel="stylesheet" href="../assets/css/fonts/fontawesome/css/font-awesome.min.css">
+
+
+<!-- Bottom Scripts -->
+<script src="../assets/js/bootstrap.min.js"></script>
+
+<script>
+
+    function applyVPC(){
+        //ostype cpu_z memsize hdsize vpcname stext
+        var ostype = $("#ostype").val();
+        var cpu_z = $("#cpu_z").val();
+        var memsize = $("#memsize").val();
+        var hdsize = $("#hdsize").val();
+        var stext = $("#stext").val();
+
+        alert(  "ostype: "+ ostype + "\nostype: "+ cpu_z +  "\nmemsize: "+ memsize + "\nhdsize: "+ hdsize + "\nstext: "+stext);
+    }
+
+</script>
+
+
+
+</html>
